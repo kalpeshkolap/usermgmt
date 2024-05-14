@@ -82,16 +82,16 @@ DATABASES = {
     'default':{
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'user',
-        'USER': 'adminapp',
-        'PASSWORD': 'Admin@1234',
-        'HOST':'localhost',
+        'USER': 'admin',
+        'PASSWORD': 'Kalpesh2104',
+        'HOST':'userapp.cvmco8oaaiv0.us-west-2.rds.amazonaws.com',
         'PORT':'3306',
     }
 }
 
 ALLOWED_HOSTS = ["*"]
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = ("http://localhost:3000", "http://10.1.1.135:30080")
+# CORS_ORIGIN_WHITELIST = ("http://localhost:3000", "http://10.1.1.135:30080")
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
