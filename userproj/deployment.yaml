@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name:  usermgmtback
-        image:  kk2104/usermgmtback:v1
+        image:  kk2104/usermgmtback:v3
         resources:
           requests:
             cpu: 100m
@@ -31,7 +31,7 @@ spec:
             cpu: 100m
             memory: 100Mi
         ports:
-        - containerPort:  8000
+        - containerPort:  9000
       restartPolicy: Always
 
 ---
@@ -48,5 +48,5 @@ spec:
   ports:
   - name: usermgmtback
     protocol: TCP
-    port: 8000
-    targetPort: 8000
+    port: 9000
+    targetPort: 9000
