@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name:  usermgmtback
-        image:  kk2104/usermgmtback:v3
+        image:  kk2104/usermgmtback:v4
         resources:
           requests:
             cpu: 100m
