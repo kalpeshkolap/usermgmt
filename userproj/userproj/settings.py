@@ -91,7 +91,7 @@ DATABASES = {
 
 ALLOWED_HOSTS = ["*"]
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ORIGIN_WHITELIST = ("http://10.0.100.15:3000", "http://10.1.1.135:30080")
+# CORS_ORIGIN_WHITELIST = ("http://10.0.100.15:3000", "http://10.1.1.135:30080")
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
