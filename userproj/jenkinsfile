@@ -1,0 +1,47 @@
+pipeline {
+  agent {
+    node {
+      label "devops"
+    }
+  }
+    stages {
+        stage('checkout code ') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/kalpeshkolap/usermgmt.git']]])
+            }
+        }
+        stage('docker build') {
+            steps {
+                script {
+                    sh '''
+                        cd userproj
+                        docker build -t kk2104/usermgmtback:v0.0.$BUILD_ID . --no-cache'''
+                }
+            }
+        }
+        stage('pushing image to registry') {
+            steps {
+                script {
+                    sh ''' docker push kk2104/usermgmtback:v0.0.$BUILD_ID 
+                           docker rmi  kk2104/usermgmtback:v0.0.$BUILD_ID '''
+                }
+            }
+        }
+        stage('deploy app') {
+            steps {
+                script {
+                    sh ''' 
+                    kubectl config use-context DEV
+                    kubectl apply -f deployment.yaml
+                    kubectl set image deployment/usermgmtback usermgmtback=kk2104/usermgmtback:v0.0.$BUILD_ID  -n userapp --record=true'''
+                    
+                }
+            }
+        }
+        stage('clean workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+    }
+}
