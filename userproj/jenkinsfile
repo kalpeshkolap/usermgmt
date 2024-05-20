@@ -31,8 +31,9 @@ pipeline {
             steps {
                 script {
                     sh ''' 
+                    cd  userproj
                     kubectl config use-context DEV
-                    kubectl apply -f /userproj/deployment.yaml
+                    kubectl apply -f deployment.yaml
                     kubectl set image deployment/usermgmtback usermgmtback=kk2104/usermgmtback:v0.0.$BUILD_ID  -n userapp --record=true'''
                     
                 }
